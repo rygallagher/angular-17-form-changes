@@ -42,7 +42,7 @@
                     <div class="w-100 flex flex-row gap-4">
                         <mat-form-field class="flex-1">
                             <mat-label>Notes</mat-label>
-                            <textarea rows="5" matInput #notesInput type="text" formControlName="notes" required></textarea>
+                            <textarea rows="5" matInput #notesInput type="text" formControlName="notes" maxlength="500" required></textarea>
                             <mat-hint align="end">{{notesInput.value.length}}/500</mat-hint>
                             @if (notes.invalid) {
                                 <mat-error>{{getErrorMessage('notes')}}</mat-error>
