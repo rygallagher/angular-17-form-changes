@@ -9,6 +9,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider'; 
+import { MatCardModule } from '@angular/material/card'; 
 
 interface IForm {
     notes: FormControl<string | null>;
@@ -24,6 +25,7 @@ interface IForm {
         MatFormFieldModule, 
         MatInputModule,
         MatDividerModule,
+        MatCardModule,
         ReactiveFormsModule,
         FormsModule,
         NgIf,
@@ -36,7 +38,7 @@ export class FormsComponent {
         notes: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
         fullName: new FormControl(null, [Validators.required]),
         phoneNumber: new FormControl(null, [Validators.pattern(/^[1-9]\d{2}-\d{3}-\d{4}/)]),
-        emailAddress: new FormControl(null, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+        emailAddress: new FormControl(null, [Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
     });
 
     get fullName(): FormControl<string | null> {
@@ -64,7 +66,7 @@ export class FormsComponent {
             case 'phoneNumber':
                 return 'Phone number must match the pattern xxx-xxx-xxxx to be valid.';
             case 'emailAddress':
-                return 'Email address is required. Email address must match the pattern xxx@xxx.xxx to be valid.';
+                return 'Email address must match the pattern xxx@xxx.xxx to be valid.';
             default:
                 return '';
         }

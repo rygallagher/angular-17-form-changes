@@ -1,52 +1,58 @@
-<div class="flex justify-center">
+<div class="flex justify-center mt-8">
     <div class="w-1/2">
-        <form [formGroup]="form" class="flex flex-col gap-4 pt-12 ">
-            <h2>Text field with required validator</h2>
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="form" class="flex flex-col gap-4 pt-4">
+                    <h2>Text field with required validator</h2>
+                
+                    <mat-form-field>
+                        <mat-label>Full Name</mat-label>
+                        <input matInput type="text" formControlName="fullName" required>
+                        @if (fullName.invalid) {
+                            <mat-error>{{getErrorMessage('fullName')}}</mat-error>
+                        }
+                    </mat-form-field>
+                
+                    <mat-divider class="py-4"></mat-divider>
         
-            <mat-form-field>
-                <mat-label>Full Name</mat-label>
-                <input matInput type="text" formControlName="fullName" required>
-                @if (fullName.invalid) {
-                    <mat-error>{{getErrorMessage('fullName')}}</mat-error>
-                }
-            </mat-form-field>
+                    <h2>Form fields with pattern validation</h2>
         
-            <mat-divider class="py-4"></mat-divider>
+                    <div class="w-100 flex flex-row gap-4">
+                        <mat-form-field class="flex-1">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput type="text" formControlName="emailAddress">
+                            @if (emailAddress.invalid) {
+                                <mat-error>{{getErrorMessage('emailAddress')}}</mat-error>
+                            }
+                        </mat-form-field>
+            
+                        <mat-form-field class="flex-1">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput type="text" formControlName="phoneNumber">
+                            @if (phoneNumber.invalid) {
+                                <mat-error>{{getErrorMessage('phoneNumber')}}</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+        
+                    <mat-divider class="py-4"></mat-divider>
+        
+                    <h2>Form field with max length validation</h2>
+        
+                    <div class="w-100 flex flex-row gap-4">
+                        <mat-form-field class="flex-1">
+                            <mat-label>Notes</mat-label>
+                            <textarea rows="5" matInput #notesInput type="text" formControlName="notes" required></textarea>
+                            <mat-hint align="end">{{notesInput.value.length}}/500</mat-hint>
+                            @if (notes.invalid) {
+                                <mat-error>{{getErrorMessage('notes')}}</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
 
-            <h2>Form fields with pattern validation</h2>
-
-            <div class="w-100 flex flex-row gap-4">
-                <mat-form-field class="flex-1">
-                    <mat-label>Email Address</mat-label>
-                    <input matInput type="text" formControlName="emailAddress" required>
-                    @if (emailAddress.invalid) {
-                        <mat-error>{{getErrorMessage('emailAddress')}}</mat-error>
-                    }
-                </mat-form-field>
-    
-                <mat-form-field class="flex-1">
-                    <mat-label>Phone Number</mat-label>
-                    <input matInput type="text" formControlName="phoneNumber" required>
-                    @if (phoneNumber.invalid) {
-                        <mat-error>{{getErrorMessage('phoneNumber')}}</mat-error>
-                    }
-                </mat-form-field>
-            </div>
-
-            <mat-divider class="py-4"></mat-divider>
-
-            <h2>Form field with max length validation</h2>
-
-            <div class="w-100 flex flex-row gap-4">
-                <mat-form-field class="flex-1">
-                    <mat-label>Notes</mat-label>
-                    <textarea rows="5" matInput #notesInput type="text" formControlName="notes" required></textarea>
-                    <mat-hint align="end">{{notesInput.value.length}}/500</mat-hint>
-                    @if (notes.invalid) {
-                        <mat-error>{{getErrorMessage('notes')}}</mat-error>
-                    }
-                </mat-form-field>
-            </div>
-        </form>
+        
     </div>
 </div>
